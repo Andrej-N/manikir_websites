@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nail Studio | Profesionalni manikir u Beogradu</title>
+<meta name="description" content="Profesionalni manikir u srcu Beograda. Gel lak, izgradnja noktiju, nail art. Zakažite svoj termin online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #FFF8F5;
+  --white: #FFFFFF;
+  --accent: #C9A0A0;
+  --accent-light: #E8B4B8;
+  --accent-dark: #B5838D;
+  --text: #1a1a1a;
+  --text-light: #555;
+  --border: #e8e0dd;
+  --unavailable: #d5d5d5;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', 'Segoe UI', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: var(--text); background: var(--bg); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: var(--font-serif); font-weight: 600; line-height: 1.2; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.section-title { font-size: clamp(2rem, 5vw, 3rem); text-align: center; margin-bottom: 12px; }
+.section-subtitle { text-align: center; color: var(--text-light); font-size: 1.05rem; margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; }
+section { padding: 96px 0; }
+.btn { display: inline-block; padding: 14px 36px; border-radius: 50px; font-family: var(--font-sans); font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; border: none; letter-spacing: 0.3px; }
+.btn-primary { background: var(--accent-dark); color: #fff; }
+.btn-primary:hover { background: #9e6e78; transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--text); }
+.btn-outline:hover { background: var(--text); color: #fff; transform: translateY(-2px); }
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 18px 0; transition: all 0.4s ease; background: transparent; }
+nav.scrolled { background: rgba(255,248,245,0.95); backdrop-filter: blur(10px); box-shadow: 0 1px 20px rgba(0,0,0,0.06); padding: 12px 0; }
+nav .container { display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 0.9rem; font-weight: 500; position: relative; transition: color 0.3s; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--accent-dark); transition: width 0.3s; }
+.nav-links a:hover::after { width: 100%; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { width: 24px; height: 2px; background: var(--text); transition: all 0.3s; display: block; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* HERO */
+#hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; background: linear-gradient(rgba(255, 248, 245, 0.8), rgba(255, 248, 245, 0.8)), url('images/hero_cover.png'); background-size: cover; background-position: center; overflow: hidden; }
+#hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(201,160,160,0.15) 0%, transparent 70%); }
+#hero::after { content: ''; position: absolute; bottom: -10%; left: -5%; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(232,180,184,0.12) 0%, transparent 70%); }
+.hero-content { position: relative; z-index: 1; }
+.hero-content h1 { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 500; margin-bottom: 20px; font-style: italic; }
+.hero-content p { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-light); margin-bottom: 40px; letter-spacing: 1px; }
+.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ABOUT */
+#about { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about-image { aspect-ratio: 3/4; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.about-image img { width: 100%; height: 100%; object-fit: cover; }
+.about-text h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 20px; }
+.about-text p { color: var(--text-light); margin-bottom: 28px; line-height: 1.8; }
+.about-values { display: flex; gap: 32px; margin-top: 8px; }
+.value-item { text-align: center; }
+.value-icon { width: 48px; height: 48px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+.value-icon svg { width: 22px; height: 22px; stroke: var(--accent-dark); fill: none; stroke-width: 1.5; }
+.value-item span { font-size: 0.85rem; font-weight: 500; }
+
+/* SERVICES */
+#services { background: var(--bg); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.service-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; transition: all 0.3s ease; }
+.service-card:hover { transform: translateY(-4px); border-color: var(--accent-light); }
+.service-card h3 { font-size: 1.4rem; margin-bottom: 6px; }
+.service-card .price { color: var(--accent-dark); font-weight: 700; font-size: 1.1rem; margin-bottom: 12px; }
+.service-card p { color: var(--text-light); font-size: 0.92rem; line-height: 1.6; }
+
+/* GALLERY */
+#gallery { background: var(--white); }
+.filter-tabs { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
+.filter-tab { padding: 8px 24px; border-radius: 50px; border: 1.5px solid var(--border); background: transparent; font-family: var(--font-sans); font-size: 0.88rem; cursor: pointer; transition: all 0.3s; font-weight: 500; }
+.filter-tab.active, .filter-tab:hover { background: var(--accent-dark); color: #fff; border-color: var(--accent-dark); }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.gallery-item { aspect-ratio: 1; border-radius: 10px; overflow: hidden; cursor: pointer; position: relative; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.gallery-item:hover img { transform: scale(1.08); }
+
+/* BOOKING */
+#booking { background: var(--bg); }
+.booking-wrapper { max-width: 720px; margin: 0 auto; }
+.calendar-container { background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid var(--border); margin-bottom: 24px; }
+.calendar-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.calendar-header h3 { font-size: 1.3rem; font-weight: 500; }
+.cal-nav { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; font-size: 1.1rem; }
+.cal-nav:hover { background: var(--accent-dark); color: #fff; border-color: var(--accent-dark); }
+.cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; margin-bottom: 8px; }
+.cal-weekdays span { font-size: 0.8rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
+.cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.92rem; cursor: pointer; transition: all 0.25s; border: none; background: none; font-family: var(--font-sans); }
+.cal-day:hover:not(.unavailable):not(.empty) { background: var(--accent-light); color: #fff; }
+.cal-day.today { font-weight: 700; border: 2px solid var(--accent); }
+.cal-day.selected { background: var(--accent-dark); color: #fff; }
+.cal-day.unavailable { color: var(--unavailable); cursor: not-allowed; text-decoration: line-through; }
+.cal-day.empty { cursor: default; }
+.time-slots { display: none; background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid var(--border); margin-bottom: 24px; }
+.time-slots.show { display: block; }
+.time-slots h3 { font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 20px; }
+.slots-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.slot { padding: 10px 22px; border-radius: 50px; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; font-family: var(--font-sans); font-size: 0.9rem; transition: all 0.3s; }
+.slot:hover:not(.taken) { border-color: var(--accent-dark); background: var(--accent-dark); color: #fff; }
+.slot.selected { background: var(--accent-dark); color: #fff; border-color: var(--accent-dark); }
+.slot.taken { color: var(--unavailable); cursor: not-allowed; text-decoration: line-through; border-color: #eee; }
+.booking-form { display: none; background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid var(--border); }
+.booking-form.show { display: block; }
+.booking-form h3 { font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 20px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 0.88rem; font-weight: 500; margin-bottom: 6px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font-sans); font-size: 0.95rem; background: var(--bg); transition: border-color 0.3s; outline: none; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-dark); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.booking-summary { background: var(--bg); border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; font-size: 0.92rem; color: var(--text-light); }
+.booking-summary strong { color: var(--text); }
+.success-message { display: none; text-align: center; padding: 40px; background: var(--white); border-radius: 16px; border: 1px solid var(--border); }
+.success-message.show { display: block; }
+.success-message h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 12px; color: var(--accent-dark); }
+
+/* TESTIMONIALS */
+#testimonials { background: var(--white); }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonial-card { background: var(--bg); border-radius: 12px; padding: 32px 28px; text-align: center; }
+.testimonial-card .stars { color: var(--accent-dark); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+.testimonial-card blockquote { font-family: var(--font-serif); font-size: 1.15rem; font-style: italic; line-height: 1.7; margin-bottom: 20px; color: var(--text); }
+.testimonial-card .client { font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-dark); }
+
+/* CONTACT */
+#contact { background: var(--bg); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.contact-item { display: flex; align-items: flex-start; gap: 14px; }
+.contact-item .icon { width: 44px; height: 44px; border-radius: 50%; background: var(--white); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-item .icon svg { width: 20px; height: 20px; stroke: var(--accent-dark); fill: none; stroke-width: 1.5; }
+.contact-item h4 { font-family: var(--font-sans); font-size: 0.92rem; font-weight: 700; margin-bottom: 2px; }
+.contact-item p { font-size: 0.9rem; color: var(--text-light); }
+.map-placeholder { width: 100%; height: 200px; border-radius: 12px; background: linear-gradient(135deg, #f0ddd8, #e8cfc9); display: flex; align-items: center; justify-content: center; color: var(--accent-dark); font-size: 0.95rem; margin-top: 12px; }
+.contact-form-section h3 { font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 24px; }
+
+/* FOOTER */
+footer { background: #1a1a1a; color: #fff; padding: 48px 0 24px; }
+.footer-content { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; align-items: start; margin-bottom: 32px; }
+.footer-logo { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; }
+.footer-logo p { font-size: 0.85rem; color: #999; margin-top: 8px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; justify-self: center; }
+.footer-links a { font-size: 0.9rem; color: #bbb; transition: color 0.3s; }
+.footer-links a:hover { color: var(--accent-light); }
+.footer-social { display: flex; gap: 14px; justify-self: end; }
+.footer-social a { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #444; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+.footer-social a:hover { border-color: var(--accent-light); background: var(--accent-dark); }
+.footer-social svg { width: 18px; height: 18px; fill: #bbb; }
+.footer-bottom { text-align: center; padding-top: 24px; border-top: 1px solid #333; font-size: 0.82rem; color: #777; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-links { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg); flex-direction: column; align-items: center; justify-content: center; gap: 28px; z-index: 999; }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1.2rem; }
+  .hamburger { display: flex; z-index: 1001; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-image { max-height: 400px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-content { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+  .footer-links { justify-self: center; }
+  .footer-social { justify-self: center; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  section { padding: 64px 0; }
+  .calendar-container, .time-slots, .booking-form { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="container">
+    <a href="#hero" class="nav-logo">Nail Studio</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeMenu()">O nama</a></li>
+      <li><a href="#services" onclick="closeMenu()">Usluge</a></li>
+      <li><a href="#gallery" onclick="closeMenu()">Radovi</a></li>
+      <li><a href="#booking" onclick="closeMenu()">Zakazivanje</a></li>
+      <li><a href="#testimonials" onclick="closeMenu()">Utisci</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Kontakt</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Meni">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content fade-in">
+    <h1>Vaši nokti, vaš stil.</h1>
+    <p>Profesionalni manikir u srcu Beograda</p>
+    <div class="hero-buttons">
+      <a href="#booking" class="btn btn-primary">Zakaži termin</a>
+      <a href="#gallery" class="btn btn-outline">Pogledaj radove</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid fade-in">
+      <div class="about-image">
+        <img src="images/about_me.png" alt="Ana - Vlasnica Nail Studija">
+      </div>
+      <div class="about-text">
+        <h2>O meni</h2>
+        <p>Zdravo, ja sam Ana — sertifikovani nail artist sa višegodišnjim iskustvom u manikiru i dizajnu noktiju. Verujem da nokti nisu samo detalj, već izraz vašeg stila i ličnosti. U mom studiju svaki tretman se radi s pažnjom, preciznošću i kvalitetnim materijalima, u opuštajućoj atmosferi koja je stvorena samo za vas.</p>
+        <div class="about-values">
+          <div class="value-item">
+            <div class="value-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <span>Preciznost</span>
+          </div>
+          <div class="value-item">
+            <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>Higijena</span>
+          </div>
+          <div class="value-item">
+            <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+            <span>Kreativnost</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <h2 class="section-title fade-in">Usluge</h2>
+    <p class="section-subtitle fade-in">Svaki tretman rađen s pažnjom i najkvalitetnijim materijalima</p>
+    <div class="services-grid">
+      <div class="service-card fade-in"><h3>Gel lak</h3><div class="price">2.500 din</div><p>Dugotrajni sjaj i boja koja traje do tri nedelje bez oštećenja.</p></div>
+      <div class="service-card fade-in"><h3>Trajni lak</h3><div class="price">2.000 din</div><p>Klasičan manikir sa trajnim lakom za negovane i uredne nokte.</p></div>
+      <div class="service-card fade-in"><h3>Izgradnja noktiju</h3><div class="price">3.500 din</div><p>Profesionalna izgradnja gelom za savršenu dužinu i oblik.</p></div>
+      <div class="service-card fade-in"><h3>Skidanje gela</h3><div class="price">800 din</div><p>Pažljivo i bezbedno skidanje gela bez oštećenja prirodnog nokta.</p></div>
+      <div class="service-card fade-in"><h3>Nail art</h3><div class="price">Po dogovoru</div><p>Jedinstveni dizajni prilagođeni vašem stilu — od minimalizma do glamura.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <h2 class="section-title fade-in">Radovi</h2>
+    <p class="section-subtitle fade-in">Pogledajte neke od najlepših dizajna iz mog studija</p>
+    <div class="filter-tabs fade-in">
+      <button class="filter-tab active" data-filter="all">Sve</button>
+      <button class="filter-tab" data-filter="gel">Gel</button>
+      <button class="filter-tab" data-filter="nailart">Nail Art</button>
+      <button class="filter-tab" data-filter="natural">Prirodni</button>
+    </div>
+    <div class="gallery-grid fade-in">
+      <div class="gallery-item" data-cat="gel"><img src="images/gallery1.png" alt="Gel dizajn"></div>
+      <div class="gallery-item" data-cat="nailart"><img src="images/gallery2.png" alt="Nail art"></div>
+      <div class="gallery-item" data-cat="natural"><img src="images/gallery3.png" alt="Prirodni look"></div>
+      <div class="gallery-item" data-cat="gel"><img src="images/gallery4.png" alt="Gel french"></div>
+      <div class="gallery-item" data-cat="nailart"><img src="images/gallery5.png" alt="Umetnost"></div>
+      <div class="gallery-item" data-cat="natural"><img src="images/gallery6.png" alt="Nude nokti"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <h2 class="section-title fade-in">Zakažite termin</h2>
+    <p class="section-subtitle fade-in">Izaberite datum, vreme i uslugu — lako i brzo</p>
+    <div class="booking-wrapper fade-in">
+      <div class="calendar-container" id="calendarContainer">
+        <div class="calendar-header">
+          <button class="cal-nav" id="prevMonth">‹</button>
+          <h3 id="calMonthYear"></h3>
+          <button class="cal-nav" id="nextMonth">›</button>
+        </div>
+        <div class="cal-weekdays"><span>Pon</span><span>Uto</span><span>Sre</span><span>Čet</span><span>Pet</span><span>Sub</span><span>Ned</span></div>
+        <div class="cal-days" id="calDays"></div>
+      </div>
+      <div class="time-slots" id="timeSlots">
+        <h3>Izaberite vreme</h3>
+        <div class="slots-grid" id="slotsGrid"></div>
+      </div>
+      <div class="booking-form" id="bookingForm">
+        <h3>Vaši podaci</h3>
+        <div class="booking-summary" id="bookingSummary"></div>
+        <div class="form-group"><label for="bName">Ime i prezime</label><input type="text" id="bName" placeholder="Unesite ime i prezime"></div>
+        <div class="form-group"><label for="bPhone">Broj telefona</label><input type="tel" id="bPhone" placeholder="06X XXX XXXX"></div>
+        <div class="form-group"><label for="bService">Usluga</label>
+          <select id="bService"><option value="">Izaberite uslugu</option><option>Gel lak — 2.500 din</option><option>Trajni lak — 2.000 din</option><option>Izgradnja noktiju — 3.500 din</option><option>Skidanje gela — 800 din</option><option>Nail art — po dogovoru</option></select>
+        </div>
+        <div class="form-group"><label for="bNote">Napomena (opciono)</label><textarea id="bNote" placeholder="Dajte nam do znanja ako imate posebne želje..."></textarea></div>
+        <button class="btn btn-primary" style="width:100%" id="submitBooking">Potvrdi termin</button>
+      </div>
+      <div class="success-message" id="successMsg">
+        <h3>Termin je zakazan! ✓</h3>
+        <p>Hvala vam! Poslaćemo vam potvrdu putem SMS-a. Vidimo se uskoro!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <h2 class="section-title fade-in">Utisci klijenata</h2>
+    <p class="section-subtitle fade-in">Šta kažu zadovoljne klijentke</p>
+    <div class="testimonial-grid fade-in">
+      <div class="testimonial-card"><div class="stars">★★★★★</div><blockquote>„Uvek izađem sa osmehom! Ana je neverovatno precizna i kreativna. Moji nokti nikada nisu izgledali bolje."</blockquote><div class="client">Milica</div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><blockquote>„Konačno sam pronašla nekoga kome potpuno verujem. Savršena higijena, prelepi dizajni i divna atmosfera."</blockquote><div class="client">Jelena</div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><blockquote>„Nail art koji radim kod Ane uvek izaziva komplimente. Profesionalnost na prvom mestu!"</blockquote><div class="client">Tamara</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title fade-in">Kontakt</h2>
+    <p class="section-subtitle fade-in">Javite nam se ili nas posetite</p>
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h4>Adresa</h4><p>Knez Mihailova 25, Beograd</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><h4>Telefon</h4><p>+381 63 123 4567</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></div>
+          <div><h4>Instagram</h4><p>@nailstudio.bg</p></div>
+        </div>
+        <div class="map-placeholder">📍 Mapa — Knez Mihailova 25</div>
+      </div>
+      <div class="contact-form-section">
+        <h3>Pošaljite poruku</h3>
+        <form id="contactForm">
+          <div class="form-group"><label for="cName">Ime</label><input type="text" id="cName" placeholder="Vaše ime" required></div>
+          <div class="form-group"><label for="cEmail">Email</label><input type="email" id="cEmail" placeholder="vaš@email.com" required></div>
+          <div class="form-group"><label for="cMsg">Poruka</label><textarea id="cMsg" placeholder="Vaša poruka..." required></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%">Pošalji</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div><div class="footer-logo">Nail Studio</div><p>Profesionalni manikir u Beogradu</p></div>
+      <div class="footer-links">
+        <a href="#about">O nama</a><a href="#services">Usluge</a><a href="#gallery">Radovi</a><a href="#booking">Zakazivanje</a><a href="#contact">Kontakt</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="#bbb" stroke-width="1.5"/><circle cx="12" cy="12" r="5" fill="none" stroke="#bbb" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#bbb"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="none" stroke="#bbb" stroke-width="1.5"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" fill="none" stroke="#bbb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Nail Studio. Sva prava zadržana.</div>
+  </div>
+</footer>
+
+<script>
+// NAV
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+const navbar = document.getElementById('navbar');
+hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('open'); });
+function closeMenu() { hamburger.classList.remove('active'); navLinks.classList.remove('open'); }
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+
+// FADE-IN
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// GALLERY FILTER
+document.querySelectorAll('.filter-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const f = tab.dataset.filter;
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.style.display = (f === 'all' || item.dataset.cat === f) ? '' : 'none';
+    });
+  });
+});
+
+// CALENDAR
+const monthNames = ['Januar','Februar','Mart','April','Maj','Jun','Jul','Avgust','Septembar','Okbar','Novembar','Decembar'];
+let calDate = new Date();
+let selectedDate = null, selectedTime = null;
+// Unavailable days (example)
+const unavailable = {'2026-03-17':true,'2026-03-22':true,'2026-03-29':true,'2026-04-05':true,'2026-04-12':true,'2026-04-19':true};
+const takenSlots = {'2026-03-14':['10:30','15:00'],'2026-03-16':['09:00','12:00','16:30'],'2026-03-18':['13:30'],'2026-04-07':['09:00','10:30']};
+const allSlots = ['09:00','10:30','12:00','13:30','15:00','16:30','18:00'];
+
+function pad(n){return n<10?'0'+n:n;}
+function dateKey(y,m,d){return y+'-'+pad(m+1)+'-'+pad(d);}
+function renderCalendar(){
+  const y=calDate.getFullYear(), m=calDate.getMonth();
+  document.getElementById('calMonthYear').textContent=monthNames[m]+' '+y;
+  const first=new Date(y,m,1).getDay(), daysInMonth=new Date(y,m+1,0).getDate();
+  const startDay=(first===0)?6:first-1;
+  const today=new Date(); let html='';
+  for(let i=0;i<startDay;i++) html+='<div class="cal-day empty"></div>';
+  for(let d=1;d<=daysInMonth;d++){
+    const key=dateKey(y,m,d);
+    const isToday=d===today.getDate()&&m===today.getMonth()&&y===today.getFullYear();
+    const isUnavail=unavailable[key]||false;
+    const isPast=new Date(y,m,d)<new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    const isSel=selectedDate===key;
+    let cls='cal-day';
+    if(isToday)cls+=' today';
+    if(isUnavail||isPast)cls+=' unavailable';
+    if(isSel)cls+=' selected';
+    html+='<button class="'+cls+'" data-date="'+key+'" data-day="'+d+'">'+d+'</button>';
+  }
+  document.getElementById('calDays').innerHTML=html;
+  document.querySelectorAll('.cal-day:not(.unavailable):not(.empty)').forEach(btn=>{
+    btn.addEventListener('click',()=>selectDate(btn.dataset.date));
+  });
+}
+function selectDate(key){
+  selectedDate=key; selectedTime=null;
+  renderCalendar();
+  const taken=takenSlots[key]||[];
+  let html='';
+  allSlots.forEach(s=>{
+    const isTaken=taken.includes(s);
+    html+='<button class="slot'+(isTaken?' taken':'')+'" data-time="'+s+'">'+s+'</button>';
+  });
+  document.getElementById('slotsGrid').innerHTML=html;
+  document.getElementById('timeSlots').classList.add('show');
+  document.getElementById('bookingForm').classList.remove('show');
+  document.querySelectorAll('.slot:not(.taken)').forEach(btn=>{
+    btn.addEventListener('click',()=>selectTime(btn.dataset.time));
+  });
+}
+function selectTime(time){
+  selectedTime=time;
+  document.querySelectorAll('.slot').forEach(s=>s.classList.remove('selected'));
+  document.querySelector('.slot[data-time="'+time+'"]').classList.add('selected');
+  document.getElementById('bookingForm').classList.add('show');
+  const parts=selectedDate.split('-');
+  const d=parseInt(parts[2]), m=monthNames[parseInt(parts[1])-1];
+  document.getElementById('bookingSummary').innerHTML='<strong>Datum:</strong> '+d+'. '+m+' '+parts[0]+' &nbsp;|&nbsp; <strong>Vreme:</strong> '+selectedTime;
+}
+document.getElementById('prevMonth').addEventListener('click',()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar();});
+document.getElementById('nextMonth').addEventListener('click',()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar();});
+renderCalendar();
+
+// BOOKING SUBMIT
+document.getElementById('submitBooking').addEventListener('click',()=>{
+  const n=document.getElementById('bName').value.trim(),p=document.getElementById('bPhone').value.trim(),s=document.getElementById('bService').value;
+  if(!n||!p||!s){alert('Molimo popunite sva obavezna polja.');return;}
+  document.getElementById('bookingForm').classList.remove('show');
+  document.getElementById('timeSlots').classList.remove('show');
+  document.getElementById('calendarContainer').style.display='none';
+  document.getElementById('successMsg').classList.add('show');
+});
+
+// CONTACT FORM
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();alert('Hvala! Vaša poruka je poslata.');e.target.reset();
+});
+</script>
+</body>
+</html>
